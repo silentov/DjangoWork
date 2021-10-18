@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-
+    path('', BlogListView.as_view(), name='home'),
 ]

@@ -96,3 +96,4 @@ class User(models.Model):
     passport_org = models.CharField(max_length=255, verbose_name='Кем выдан')
     org_code = models.CharField(max_length=20, verbose_name='Дата выдачи')
 
+
