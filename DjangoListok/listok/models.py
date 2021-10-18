@@ -18,6 +18,33 @@ class Abonements(models.Model):
         return f'{self.ident} | {self.title} | {self.num} | {self.month} мес.{self.days} дн. | {self.price}'
 
 
+class Status(models.Model):
+    st = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f'{self.st}'
+
+
+class Source:
+    sr = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f'{self.sr}'
+
+
+class ClassFormat:
+    cf = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f'{self.cf}'
+
+
+class Contraindications:
+    cd = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f'{self.cd}'
+
 
 class User(models.Model):
 
@@ -51,15 +78,15 @@ class User(models.Model):
     FIO_family = models.CharField(max_length=255, verbose_name='ФИО роидтеля', blank=True)
     number_family = models.CharField(max_length=255, verbose_name='Телефон родителя')
     email = models.CharField(max_length=255, verbose_name='Email', blank=True)
-    status = models.ForeignKey()
+    status = models.ForeignKey(Status, verbose_name='Статус')
     blacklist = models.CharField(max_length=1, verbose_name='Черный список', choices=blacklist_choise)
-    source = models.ForeignKey()
-    class_format = models.ForeignKey()
+    source = models.ForeignKey(Source, verbose_name='Источник')
+    class_format = models.ForeignKey(ClassFormat, verbose_name='Формат занятий')
     personal_disc = models.PositiveSmallIntegerField(blank=True)
     Vk_id = models.CharField(max_length=255, verbose_name='Вконтакте ID', blank=True)
     Fb_id = models.CharField(max_length=255, verbose_name='Facebook ID', blank=True)
     Ig_id = models.CharField(max_length=255, verbose_name='Instagramm ID', blank=True)
-    contraindications = models.ForeignKey()
+    contraindications = models.ForeignKey(Contraindications, verbose_name='Противопоказания')
     sms = models.CharField(max_length=1, verbose_name='Отправка сообщений', choices=sms_choise)
     email_choise = models.CharField(max_length=1, verbose_name='Отправка Email', choices=sms_choise)
     notes_unvi = models.TextField(max_length=1000, verbose_name='Заметки', blank=True)
@@ -68,3 +95,4 @@ class User(models.Model):
     passport_date = models.DateTimeField(auto_now=False, auto_now_add=False, verbose_name='Дата выдачи паспорта')
     passport_org = models.CharField(max_length=255, verbose_name='Кем выдан')
     org_code = models.CharField(max_length=20, verbose_name='Дата выдачи')
+
