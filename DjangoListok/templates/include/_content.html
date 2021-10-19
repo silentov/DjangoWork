@@ -1,0 +1,42 @@
+<div class="col-md-8">
+            {% for item in personal %}
+            <div class="card text-right">
+                <div class="card-header">
+                    <t1>Введите данные клиента</t1>
+                </div>
+                <div class="card-body">
+                    <p class="card-title">Имя: {{ item.FIO }}</p>
+                    <p class="card-text">Пол: {{ item.gender }}</p>
+                    <p class="card-text">Телефон: {{ item.number }}</p>
+                    <p class="card-text">Телефон (альтернативный): {{ item.number2 }}</p>
+                    <p class="card-text">Дата рождения: {{ item.birthday_date }}</p>
+                    <p class="card-text">Адрес: {{ item.adres }}</p>
+                    <p class="card-text">Штрих-код: {{ item.code }}</p>
+                    <p class="card-text">Карточка родителя: {{ item.family_field }}</p>
+                    <p class="card-text">ФИО родителя: {{ item.FIO_family }}</p>
+                    <p class="card-text">Номер родителя: {{ item.number_family }}</p>
+                    <p class="card-text">Email: {{ item.email }}</p>
+                    <p class="card-text">Статус: {{ item.status }}</p>
+                    <p class="card-text">Черный список: {{ item.blacklist }}</p>
+                    <p class="card-text">Источник: {{ item.source }}</p>
+                    <p class="card-text">Формат занятий: {{ item.class_format }}</p>
+                    <p class="card-text">Персональная скидка: {{ item.personal_disc }}</p>
+                    <p class="card-text">Вконтакте ID: {{ item.Vk_id }}</p>
+                    <p class="card-text">Facebook ID: {{ item.Fb_id }}</p>
+                    <p class="card-text">Instagramm ID: {{ item.Ig_id }}</p>
+                    <p class="card-text">Оправка сообщений: {{ item.sms }}</p>
+                    <p class="card-text">Отправка Email: {{ item.email_choise }}</p>
+                    <p class="card-text">Заметки: {{ item.notes_unvi }}</p>
+                    <p class="card-text">Серия и номер паспорта: {{ item.passport }}</p>
+                    <p class="card-text">Дата выдачи паспорта: {{ item.passport_date }}</p>
+                    <p class="card-text">Кем выдан: {{ item.passport_org }}</p>
+                    <p class="card-text">Код организации: {{ item.org_code }}</p>
+                    <button type="submit" class="btn btn-primary"><a href="{% url 'update_personal' item.id %}" style="color:#000; text-decoration:none;"/>Изменить</button>
+                    <button type="submit" class="btn btn-primary"><a href="{% url 'delete_personal' item.id %}" style="color:#000; text-decoration:none;"/>Удалить</button>
+                </div>
+                <div class="card-footer text-muted">
+                    {{ item.created_at }}
+                </div>
+            </div>
+            {% endfor %}
+</div>

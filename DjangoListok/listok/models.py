@@ -34,6 +34,7 @@ class User(models.Model):
     class Meta:
         verbose_name = "Клиент"
         verbose_name_plural = "Клиенты"
+        ordering = ['ab_status']
 
     gender_choise = (
         ('М', 'Мужской'),
@@ -61,16 +62,17 @@ class User(models.Model):
     FIO_family = models.CharField(max_length=255, verbose_name='ФИО роидтеля', blank=True)
     number_family = models.CharField(max_length=255, verbose_name='Телефон родителя', blank=True)
     email = models.CharField(max_length=255, verbose_name='Email', blank=True)
-    status = models.ForeignKey(Status, verbose_name='Статус', on_delete=models.PROTECT, blank=True)
+    status = models.ForeignKey('Status', verbose_name='Статус', on_delete=models.PROTECT, blank=True, null=True)
     ab_status = models.CharField(max_length=255, verbose_name='Статус абонемента')      # придумать метод и формат поля
     blacklist = models.CharField(max_length=1, verbose_name='Черный список', choices=blacklist_choise)
-    source = models.ForeignKey('Source', verbose_name='Источник', on_delete=models.PROTECT, blank=True)
-    class_format = models.ForeignKey('ClassFormat', verbose_name='Формат занятий', on_delete=models.PROTECT)
-    personal_disc = models.PositiveSmallIntegerField(verbose_name='Персональная скидка', blank=True)
+    source = models.ForeignKey('Source', verbose_name='Источник', on_delete=models.PROTECT, blank=True, null=True)
+    class_format = models.ForeignKey('ClassFormat', verbose_name='Формат занятий', on_delete=models.PROTECT, blank=True, null=True)
+    personal_disc = models.PositiveSmallIntegerField(verbose_name='Персональная скидка', blank=True, null=True)
     Vk_id = models.CharField(max_length=255, verbose_name='Вконтакте ID', blank=True)
     Fb_id = models.CharField(max_length=255, verbose_name='Facebook ID', blank=True)
     Ig_id = models.CharField(max_length=255, verbose_name='Instagramm ID', blank=True)
-    contraindications = models.ForeignKey('Contraindications', verbose_name='Противопоказания', on_delete=models.PROTECT)
+    contraindications = models.ForeignKey('Contraindications', verbose_name='Противопоказания', on_delete=models.PROTECT,
+                                          blank=True, null=True)
     sms = models.CharField(max_length=1, verbose_name='Отправка сообщений', choices=sms_choise)
     email_choise = models.CharField(max_length=1, verbose_name='Отправка Email', choices=sms_choise)
     notes_unvi = models.TextField(max_length=1000, verbose_name='Заметки', blank=True)
