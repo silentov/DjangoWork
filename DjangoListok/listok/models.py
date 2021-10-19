@@ -37,7 +37,7 @@ class User(models.Model):
         ordering = ['ab_status']
 
     gender_choise = (
-        ('М', 'Мужской'),
+        ('Мужской', 'Мужской'),
         ('Ж', 'Женский')
     )
 
@@ -52,7 +52,7 @@ class User(models.Model):
     )
 
     FIO = models.CharField(max_length=255, verbose_name='ФИО')
-    gender = models.CharField(max_length=1, choices=gender_choise, verbose_name='Пол')
+    gender = models.CharField(max_length=10, choices=gender_choise, verbose_name='Пол')
     number = models.CharField(max_length=30, verbose_name='Телефон')
     number2 = models.CharField(max_length=30, verbose_name='Телефон (альтернативный)', blank=True)
     birthday_date = models.DateField(auto_now=False, auto_now_add=False, verbose_name='Дата рождения')

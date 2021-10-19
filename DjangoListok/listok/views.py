@@ -4,7 +4,7 @@ from .forms import UserForm
 
 
 def clients(request):
-    personal = User.objects.order_by('FIO')
+    personal = User.objects.order_by('ab_status')
     context = {
         'personal': personal,
         'title': 'Список персонала',

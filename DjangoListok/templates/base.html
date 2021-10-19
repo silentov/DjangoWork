@@ -10,6 +10,13 @@
 <body>
 
 {% include 'include/_nav.html' %}
+<div class="container mt-3">
+    <div class="row">
+        {% block content %}
+            {% include 'include/_content.html' %}
+        {% endblock %}
+    </div>
+</div>
 
 
 
